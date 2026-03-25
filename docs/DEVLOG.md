@@ -87,7 +87,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 |--------|-------|--------|
 | `PRD-001` | Define MVP scope and non-goals for assignment submission | ✅ |
 | `PRD-002` | Finalize supported betting markets for demo: win/draw/loss only | ✅ |
-| `PRD-003` | Define user-visible bet statuses and balance labels | ⏳ |
+| `PRD-003` | Define user-visible bet statuses and balance labels | ✅ |
 | `PRD-004` | Finalize Haitian Creole and French terminology glossary | ⏳ |
 | `ARCH-001` | Choose mobile stack and local storage strategy | ✅ |
 | `ARCH-002` | Choose backend framework and service boundaries | ✅ |
@@ -347,6 +347,28 @@ Use this structure for each completed ticket entry.
 ### Next Steps
 - [What this ticket unblocks]
 - [What should be tackled next]
+
+---
+
+## PRD-003: Define user-visible bet statuses and balance labels ✅
+
+### Plain-English Summary
+- Locked the bet state machine: 9 user-facing states with colors, internal state progression, valid/invalid transitions.
+- Locked the three-part balance breakdown: Available, In active bets, Pending settlement — with transition rules for every lifecycle event.
+
+### Metadata
+- **Status:** Complete
+- **Date:** Mar 24, 2026
+- **Ticket:** `PRD-003`
+- **Branch:** `feature/PRD-003-statuses-and-labels`
+
+### Files Changed
+- **Created:** `docs/primers/PRD-003-primer.md`
+- **Modified:** `docs/mvp-scope.md` — added Bet State Machine and Balance Labels sections
+- **Updated:** `docs/DEVLOG.md` — this entry
+
+### Next Steps
+- PRD-004: Finalize Haitian Creole and French terminology glossary
 
 ---
 
