@@ -71,7 +71,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | Phase | Name | Ticket Range | Status |
 |------|------|--------------|--------|
 | P0 | Discovery and Scope Lock | `PRD-001` to `PM-002` | 🔶 10/11 complete (ARCH-004 narrowed) |
-| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (2/19) |
+| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (3/19) |
 | P2 | Core Betting Loop | `ODDS-001` to `SET-005` | ⏳ Pending |
 | P3 | Demo Hardening | `OFF-001` to `QA-005` | ⏳ Pending |
 | P4 | MVP Operational Hardening | `RPC-001` to `SUP-003` | ⏳ Pending |
@@ -113,7 +113,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | `API-005` | Create balance service skeleton | ⏳ |
 | `API-006` | Create match and odds service skeleton | ⏳ |
 | `API-007` | Create receipt and history service skeleton | ⏳ |
-| `SOL-001` | Initialize Rust Solana program scaffold | ⏳ |
+| `SOL-001` | Initialize Rust Solana program scaffold | ✅ |
 | `SOL-002` | Define program accounts and PDA strategy | ⏳ |
 | `SOL-003` | Implement devnet deployment pipeline | ⏳ |
 | `SOL-004` | Set up HTGN demo token mint or integration path | ⏳ |
@@ -347,6 +347,34 @@ Use this structure for each completed ticket entry.
 ### Next Steps
 - [What this ticket unblocks]
 - [What should be tackled next]
+
+---
+
+## SOL-001: Initialize Rust Solana program scaffold ✅
+
+### Plain-English Summary
+- Anchor 0.32.1 program in `programs/escrow/` with basic initialize instruction.
+- `anchor build` succeeds, IDL generated to `target/idl/escrow.json` and `target/types/escrow.ts`.
+- `cargo test` passes. Configured for both localnet and devnet.
+
+### Metadata
+- **Status:** Complete
+- **Date:** Mar 24, 2026
+- **Ticket:** `SOL-001`
+- **Branch:** `feature/SOL-001-anchor-scaffold`
+
+### Testing
+- cargo test: 1 passed
+
+### Files Changed
+- **Created:** `Anchor.toml`, `Cargo.toml`, `Cargo.lock`, `programs/escrow/`
+- **Created:** `docs/primers/SOL-001-primer.md`
+- **Updated:** `docs/DEVLOG.md` — this entry
+
+### Next Steps
+- SOL-002: Define program accounts and PDA strategy
+- SOL-003: Devnet deployment pipeline
+- SOL-004: HTGN demo token mint
 
 ---
 
