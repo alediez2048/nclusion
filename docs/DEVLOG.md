@@ -71,7 +71,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | Phase | Name | Ticket Range | Status |
 |------|------|--------------|--------|
 | P0 | Discovery and Scope Lock | `PRD-001` to `PM-002` | 🔶 10/11 complete (ARCH-004 narrowed) |
-| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (6/19) |
+| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (11/19) |
 | P2 | Core Betting Loop | `ODDS-001` to `SET-005` | ⏳ Pending |
 | P3 | Demo Hardening | `OFF-001` to `QA-005` | ⏳ Pending |
 | P4 | MVP Operational Hardening | `RPC-001` to `SUP-003` | ⏳ Pending |
@@ -108,11 +108,11 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | `MOB-005` | Add network-state detection and connectivity banner | ⏳ |
 | `API-001` | Initialize TypeScript backend monorepo or service layout | ✅ |
 | `API-002` | Create API gateway with auth middleware | ✅ |
-| `API-003` | Create user service and managed wallet mapping | ⏳ |
-| `API-004` | Create betting service skeleton | ⏳ |
-| `API-005` | Create balance service skeleton | ⏳ |
-| `API-006` | Create match and odds service skeleton | ⏳ |
-| `API-007` | Create receipt and history service skeleton | ⏳ |
+| `API-003` | Create user service and managed wallet mapping | ✅ |
+| `API-004` | Create betting service skeleton | ✅ |
+| `API-005` | Create balance service skeleton | ✅ |
+| `API-006` | Create match and odds service skeleton | ✅ |
+| `API-007` | Create receipt and history service skeleton | ✅ |
 | `SOL-001` | Initialize Rust Solana program scaffold | ✅ |
 | `SOL-002` | Define program accounts and PDA strategy | ✅ |
 | `SOL-003` | Implement devnet deployment pipeline | ⏳ |
@@ -347,6 +347,31 @@ Use this structure for each completed ticket entry.
 ### Next Steps
 - [What this ticket unblocks]
 - [What should be tackled next]
+
+---
+
+## API-003 through API-007: Service skeletons with route stubs ✅
+
+### Plain-English Summary
+- All 7 services (user, betting, balance, match-odds, relay, settlement, history) now have real route stubs with proper HTTP methods and 501 responses.
+- User service created as new workspace package with register/login/profile endpoints.
+- 7 health check tests added. 44/44 pipeline tasks pass.
+
+### Metadata
+- **Status:** Complete
+- **Date:** Mar 24, 2026
+- **Tickets:** `API-003`, `API-004`, `API-005`, `API-006`, `API-007`
+- **Branch:** `feature/API-003-007-service-skeletons`
+
+### Testing
+- Tests added: 7 (one per service)
+- Total pipeline: 44/44 pass
+
+### Files Changed
+- **Created:** `services/user/` (package.json, tsconfig, src/index.ts, test)
+- **Modified:** All 6 existing service `src/index.ts` files with route stubs
+- **Created:** 7 service test files
+- **Updated:** `docs/DEVLOG.md` — this entry
 
 ---
 
