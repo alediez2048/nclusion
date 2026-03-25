@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* Nclusion Design Tokens */
+@theme {
+	--color-gold: #FFC600;
+	--color-gold-secondary: #F9CB0E;
+	--color-gold-20: rgba(255, 198, 0, 0.2);
+	--color-gold-10: rgba(255, 198, 0, 0.1);
+	--color-dark-bg: #141518;
+	--color-dark-navy: #1D202E;
+	--color-dark-card: #161A28;
+	--color-gray-700: rgb(55, 65, 81);
+	--color-gray-400: rgb(156, 163, 175);
+	--color-gray-300: rgb(209, 213, 219);
+}
+
+body {
+	background-color: var(--color-dark-bg);
+	color: var(--color-gray-300);
+	font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Mobile viewport simulation — looks like a phone in desktop browsers */
+#root {
+	max-width: 430px;
+	margin: 0 auto;
+	min-height: 100vh;
+	background-color: var(--color-dark-bg);
+	position: relative;
+	overflow-x: hidden;
+}
+
+@media (min-width: 431px) {
+	body {
+		background-color: #0a0a0c;
+	}
+	#root {
+		border-left: 1px solid var(--color-gray-700);
+		border-right: 1px solid var(--color-gray-700);
+	}
+}

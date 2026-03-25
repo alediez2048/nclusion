@@ -1,0 +1,9 @@
+{
+	"nav": { "home": "Accueil", "history": "Historique", "wallet": "Portefeuille" },
+	"status": { "draft": "Brouillon", "queued": "En file d'attente", "processing": "En traitement", "confirmed": "Confirmé", "pending_settlement": "En attente de règlement", "won": "Gagné", "lost": "Perdu", "cancelled": "Annulé", "failed": "Échoué" },
+	"balance": { "available": "Disponible", "in_active_bets": "Dans les paris actifs", "pending_settlement": "En attente de règlement" },
+	"bet": { "place_bet": "Placer le pari", "confirm_bet": "Confirmer le pari", "stake": "Mise", "potential_payout": "Gain potentiel", "home_win": "Victoire domicile", "draw": "Match nul", "away_win": "Victoire extérieur" },
+	"connectivity": { "offline": "Hors ligne", "limited": "Connexion limitée", "synced": "Synchronisé" },
+	"errors": { "connection_lost": "Connexion perdue", "odds_changed": "Les cotes ont changé. Veuillez vérifier et confirmer.", "insufficient_balance": "HTGN disponible insuffisant.", "generic_error": "Une erreur est survenue. Veuillez réessayer." },
+	"general": { "loading": "Chargement...", "refresh": "Actualiser", "confirm": "Confirmer", "cancel": "Annuler" }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@nclusion/web",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check src/",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nclusion/shared-types": "workspace:*",
+    "i18next": "^25",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-i18next": "^15",
+    "react-router-dom": "^7",
+    "zustand": "^5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9",
+    "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "tailwindcss": "^4",
+    "typescript": "^5.9",
+    "vite": "^8",
+    "vitest": "^3"
+  }
+}

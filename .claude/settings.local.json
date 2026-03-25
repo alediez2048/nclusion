@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "Bash(source \"$HOME/.cargo/env\")",
+      "Bash(export PATH=\"/Users/jad/.local/share/solana/install/active_release/bin:$PATH\")",
+      "Bash(anchor build:*)",
+      "Bash(export PATH=\"/opt/homebrew/opt/postgresql@16/bin:/Users/jad/.local/share/solana/install/active_release/bin:$HOME/.cargo/bin:$PATH\")",
+      "Bash(pnpm run:*)"
     ]
   }
 }
