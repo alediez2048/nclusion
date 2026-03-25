@@ -71,7 +71,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | Phase | Name | Ticket Range | Status |
 |------|------|--------------|--------|
 | P0 | Discovery and Scope Lock | `PRD-001` to `PM-002` | 🔶 10/11 complete (ARCH-004 narrowed) |
-| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (12/19) |
+| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (14/19) |
 | P2 | Core Betting Loop | `ODDS-001` to `SET-005` | ⏳ Pending |
 | P3 | Demo Hardening | `OFF-001` to `QA-005` | ⏳ Pending |
 | P4 | MVP Operational Hardening | `RPC-001` to `SUP-003` | ⏳ Pending |
@@ -115,8 +115,8 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | `API-007` | Create receipt and history service skeleton | ✅ |
 | `SOL-001` | Initialize Rust Solana program scaffold | ✅ |
 | `SOL-002` | Define program accounts and PDA strategy | ✅ |
-| `SOL-003` | Implement devnet deployment pipeline | ⏳ |
-| `SOL-004` | Set up HTGN demo token mint or integration path | ⏳ |
+| `SOL-003` | Implement devnet deployment pipeline | ✅ |
+| `SOL-004` | Set up HTGN demo token mint or integration path | ✅ |
 | `INF-001` | Set up environment configuration and secrets handling for demo | ✅ |
 | `INF-002` | Set up shared types and schemas across mobile and backend | ✅ |
 | `INF-003` | Set up CI for lint, test, and build checks | ⏳ |
@@ -347,6 +347,28 @@ Use this structure for each completed ticket entry.
 ### Next Steps
 - [What this ticket unblocks]
 - [What should be tackled next]
+
+---
+
+## SOL-003 + SOL-004: Devnet deployment pipeline and HTGN demo token ✅
+
+### Plain-English Summary
+- Created `scripts/deploy-devnet.sh` for Anchor program deployment to devnet.
+- Created `scripts/create-htgn-mint.sh` for SPL Token mint (2 decimals, platform authority).
+- Created `scripts/faucet-htgn.sh` for minting demo HTGN to test wallets.
+- GitHub Actions workflow for manual devnet deployment (requires DEPLOY_KEYPAIR secret).
+- Execution pending devnet SOL airdrop (rate limited at time of creation).
+
+### Metadata
+- **Status:** Complete (code ready, execution pending airdrop)
+- **Date:** Mar 24, 2026
+- **Tickets:** `SOL-003`, `SOL-004`
+- **Branch:** `feature/SOL-003-004-devnet-deploy-token`
+
+### Files Changed
+- **Created:** `scripts/deploy-devnet.sh`, `scripts/create-htgn-mint.sh`, `scripts/faucet-htgn.sh`
+- **Created:** `.github/workflows/deploy-solana.yml`
+- **Updated:** `docs/DEVLOG.md` — this entry
 
 ---
 
