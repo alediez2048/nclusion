@@ -71,7 +71,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | Phase | Name | Ticket Range | Status |
 |------|------|--------------|--------|
 | P0 | Discovery and Scope Lock | `PRD-001` to `PM-002` | 🔶 10/11 complete (ARCH-004 narrowed) |
-| P1 | Foundations | `MOB-001` to `INF-003` | ⏳ Pending |
+| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (1/19) |
 | P2 | Core Betting Loop | `ODDS-001` to `SET-005` | ⏳ Pending |
 | P3 | Demo Hardening | `OFF-001` to `QA-005` | ⏳ Pending |
 | P4 | MVP Operational Hardening | `RPC-001` to `SUP-003` | ⏳ Pending |
@@ -106,7 +106,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | `MOB-003` | Add SQLite persistence layer | ⏳ |
 | `MOB-004` | Add localization framework and language switching | ⏳ |
 | `MOB-005` | Add network-state detection and connectivity banner | ⏳ |
-| `API-001` | Initialize TypeScript backend monorepo or service layout | ⏳ |
+| `API-001` | Initialize TypeScript backend monorepo or service layout | ✅ |
 | `API-002` | Create API gateway with auth middleware | ⏳ |
 | `API-003` | Create user service and managed wallet mapping | ⏳ |
 | `API-004` | Create betting service skeleton | ⏳ |
@@ -347,6 +347,44 @@ Use this structure for each completed ticket entry.
 ### Next Steps
 - [What this ticket unblocks]
 - [What should be tackled next]
+
+---
+
+## API-001: Initialize TypeScript backend monorepo or service layout ✅
+
+### Plain-English Summary
+- Set up the Turborepo + pnpm workspaces monorepo that holds all TypeScript code.
+- Created gateway app with Hono health check and test, 6 service skeletons, and 3 shared packages.
+- All 4 pipelines pass: build, test, lint, typecheck (40/40 tasks).
+
+### Metadata
+- **Status:** Complete
+- **Date:** Mar 24, 2026
+- **Ticket:** `API-001`
+- **Branch:** `feature/API-001-init-backend-monorepo`
+- **Related Docs:** `techstack.md`, `systemsdesign.md`
+
+### Key Achievements
+- Monorepo structure: apps/gateway, 6 services, 3 shared packages
+- Biome linting, Vitest testing, TypeScript strict mode configured
+- Gateway health check test passes via `app.request()` (no server spin-up)
+- Turborepo caching functional across all packages
+- `vitest.config.ts` with `passWithNoTests` for empty packages
+
+### Files Changed
+- **Created:** 40 files across monorepo structure (see commit)
+- **Updated:** `docs/DEVLOG.md` — this entry
+
+### Testing
+- Tests added: 1 (gateway health check)
+- Test results: 1 passed
+- All pipelines: `turbo build test lint typecheck` — 40/40 pass
+
+### Next Steps
+- API-002: Create API gateway with auth middleware
+- INF-002: Set up shared types / schemas
+- SOL-001: Initialize Rust Solana program scaffold (independent)
+- MOB-001: Initialize Android-first TypeScript app (independent)
 
 ---
 
