@@ -1,0 +1,47 @@
+name: Deploy Solana Program to Devnet
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "deploy" to confirm'
+        required: true
+
+jobs:
+  deploy:
+    if: github.event.inputs.confirm == 'deploy'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Solana CLI
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+
+      - name: Install Anchor CLI
+        run: |
+          cargo install --git https://github.com/coral-xyz/anchor avm --force
+          avm install latest
+          echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Configure Solana
+        run: |
+          solana config set --url devnet
+          echo "${{ secrets.DEPLOY_KEYPAIR }}" > /tmp/deploy-keypair.json
+          solana config set --keypair /tmp/deploy-keypair.json
+
+      - name: Build program
+        run: anchor build
+
+      - name: Deploy to devnet
+        run: anchor deploy --provider.cluster devnet
+
+      - name: Show program info
+        run: |
+          PROGRAM_ID=$(solana-keygen pubkey target/deploy/escrow-keypair.json)
+          echo "Program deployed: $PROGRAM_ID"
+          echo "Explorer: https://explorer.solana.com/address/$PROGRAM_ID?cluster=devnet"
