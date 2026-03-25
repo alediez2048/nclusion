@@ -1,0 +1,25 @@
+{
+  "name": "@nclusion/solana-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check src/",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^2",
+    "@coral-xyz/anchor": "^0.30"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9",
+    "typescript": "^5.7",
+    "vitest": "^3"
+  }
+}
