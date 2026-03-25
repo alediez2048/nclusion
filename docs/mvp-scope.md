@@ -33,6 +33,78 @@ A mobile-first sports betting platform for the Haitian market that uses HTGN sta
 
 ---
 
+## Bet State Machine (PRD-003)
+
+### User-Facing States
+
+These are displayed in the mobile app via status chips:
+
+| State | Color | Meaning |
+|-------|-------|---------|
+| Draft | Gray | Bet saved locally, not submitted (offline) |
+| Queued | Yellow | Submitted to backend, awaiting relay |
+| Processing | Blue | Transaction submitted to Solana, awaiting confirmation |
+| Confirmed | Green | Bet confirmed on-chain, match not yet settled |
+| Pending settlement | Orange | Match ended, awaiting settlement execution |
+| Won | Green | Bet settled, user won, winnings credited |
+| Lost | Red | Bet settled, user lost |
+| Cancelled | Gray | Market cancelled, funds returned |
+| Failed | Red | Submission failed, funds released |
+
+### Internal States
+
+Granular states for backend observability and support:
+
+```
+intent_created → validation_passed → funds_reserved → relay_submitted
+→ signature_received → chain_confirmed → awaiting_result
+→ settlement_submitted → settlement_confirmed
+```
+
+Alternative terminal: `reverted_or_released` (failure/cancellation path)
+
+### Valid Transitions
+
+```
+Draft → Queued (user submits, connectivity available)
+Queued → Processing (relay picks up intent)
+Processing → Confirmed (chain confirmation received)
+Processing → Failed (timeout or RPC failure, funds released)
+Confirmed → Pending settlement (match ends)
+Pending settlement → Won | Lost | Cancelled (settlement executes)
+Draft → expired (TTL exceeded, auto-removed)
+Any pre-confirmed state → Failed (unrecoverable error, funds released)
+```
+
+### Invalid Transitions (enforced)
+
+- Cannot go from Won/Lost/Cancelled/Failed to any other state
+- Cannot go from Confirmed backward to Processing or Queued
+- Cannot settle a bet that isn't in Confirmed or Pending settlement
+- Cannot place a bet on a market that is already settled or cancelled
+
+## Balance Labels (PRD-003)
+
+Three-part balance breakdown, always shown together — never a single number:
+
+| Label | Meaning | When it changes |
+|-------|---------|-----------------|
+| **Available** | HTGN the user can bet with right now | Decreases on bet placement, increases on settlement win or cancellation |
+| **In active bets** | HTGN locked in confirmed, unsettled bets | Increases on chain confirmation, decreases on settlement |
+| **Pending settlement** | HTGN in bets where the match has ended but settlement hasn't executed | Increases when match ends, clears on settlement |
+
+### Balance Transition Rules
+
+```
+Place bet:      Available -= stake,  In active bets += stake
+Settlement win: In active bets -= stake,  Available += stake + winnings
+Settlement loss: In active bets -= stake  (removed, no credit)
+Cancellation:   In active bets -= stake,  Available += stake  (refund)
+Bet fails:      Available += stake  (reserved funds released)
+```
+
+---
+
 ## Target User
 
 A Haitian mobile user who:
