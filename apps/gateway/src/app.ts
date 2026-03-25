@@ -1,9 +1,11 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
-import { app as matchOddsApp } from "@nclusion/match-odds";
-import { app as bettingApp } from "@nclusion/betting";
 import { app as balanceApp } from "@nclusion/balance";
+import { app as bettingApp } from "@nclusion/betting";
+import { app as historyApp } from "@nclusion/history";
+import { app as matchOddsApp } from "@nclusion/match-odds";
+import { app as settlementApp } from "@nclusion/settlement";
 
 const app = new Hono();
 
@@ -20,13 +22,10 @@ app.get("/health", (c) => {
 
 app.use("/api/*", logger());
 
-// Match and odds — public for browsing
 app.route("/api/matches", matchOddsApp);
-
-// Betting — accepts intents
 app.route("/api/betting", bettingApp);
-
-// Balance — per user
 app.route("/api/balance", balanceApp);
+app.route("/api/settlement", settlementApp);
+app.route("/api/history", historyApp);
 
 export { app };

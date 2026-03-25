@@ -29,9 +29,15 @@ importers:
       '@nclusion/betting':
         specifier: workspace:*
         version: link:../../services/betting
+      '@nclusion/history':
+        specifier: workspace:*
+        version: link:../../services/history
       '@nclusion/match-odds':
         specifier: workspace:*
         version: link:../../services/match-odds
+      '@nclusion/settlement':
+        specifier: workspace:*
+        version: link:../../services/settlement
       '@nclusion/shared-types':
         specifier: workspace:*
         version: link:../../packages/shared-types
@@ -117,7 +123,7 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: ^0.38
-        version: 0.38.4(@op-engineering/op-sqlite@15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4))(@types/react@19.2.14)(postgres@3.4.8)(react@19.2.4)
+        version: 0.38.4(@op-engineering/op-sqlite@15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4))(@types/react@19.2.14)(postgres@3.4.8)(react@19.2.4)
       postgres:
         specifier: ^3
         version: 3.4.8
@@ -222,6 +228,9 @@ importers:
 
   services/history:
     dependencies:
+      '@nclusion/betting':
+        specifier: workspace:*
+        version: link:../betting
       '@nclusion/shared-types':
         specifier: workspace:*
         version: link:../../packages/shared-types
@@ -5369,10 +5378,10 @@ snapshots:
       fastq: 1.20.1
     optional: true
 
-  '@op-engineering/op-sqlite@15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)':
+  '@op-engineering/op-sqlite@15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)':
     dependencies:
       react: 19.2.4
-      react-native: 0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)
+      react-native: 0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)
     optional: true
 
   '@oxc-project/types@0.122.0': {}
@@ -5582,7 +5591,7 @@ snapshots:
       yargs: 17.7.2
     optional: true
 
-  '@react-native/community-cli-plugin@0.84.1(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(bufferutil@4.1.0)':
+  '@react-native/community-cli-plugin@0.84.1(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(bufferutil@4.1.0)':
     dependencies:
       '@react-native/dev-middleware': 0.84.1(bufferutil@4.1.0)
       debug: 4.4.3
@@ -5593,7 +5602,7 @@ snapshots:
       semver: 7.7.4
     optionalDependencies:
       '@react-native-community/cli': 20.1.0(bufferutil@4.1.0)(typescript@5.9.3)
-      '@react-native/metro-config': 0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0)
+      '@react-native/metro-config': 0.84.1(@babel/core@7.29.0)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -5648,7 +5657,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0)':
+  '@react-native/metro-config@0.84.1(@babel/core@7.29.0)':
     dependencies:
       '@react-native/js-polyfills': 0.84.1
       '@react-native/metro-babel-transformer': 0.84.1(@babel/core@7.29.0)
@@ -5656,20 +5665,18 @@ snapshots:
       metro-runtime: 0.83.5
     transitivePeerDependencies:
       - '@babel/core'
-      - bufferutil
       - supports-color
-      - utf-8-validate
     optional: true
 
   '@react-native/normalize-colors@0.84.1':
     optional: true
 
-  '@react-native/virtualized-lists@0.84.1(@types/react@19.2.14)(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)':
+  '@react-native/virtualized-lists@0.84.1(@types/react@19.2.14)(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
       react: 19.2.4
-      react-native: 0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)
+      react-native: 0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)
     optionalDependencies:
       '@types/react': 19.2.14
     optional: true
@@ -6978,9 +6985,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.38.4(@op-engineering/op-sqlite@15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4))(@types/react@19.2.14)(postgres@3.4.8)(react@19.2.4):
+  drizzle-orm@0.38.4(@op-engineering/op-sqlite@15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4))(@types/react@19.2.14)(postgres@3.4.8)(react@19.2.4):
     optionalDependencies:
-      '@op-engineering/op-sqlite': 15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)
+      '@op-engineering/op-sqlite': 15.2.7(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)
       '@types/react': 19.2.14
       postgres: 3.4.8
       react: 19.2.4
@@ -8284,16 +8291,16 @@ snapshots:
   react-is@18.3.1:
     optional: true
 
-  react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4):
+  react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native/assets-registry': 0.84.1
       '@react-native/codegen': 0.84.1(@babel/core@7.29.0)
-      '@react-native/community-cli-plugin': 0.84.1(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(bufferutil@4.1.0)
+      '@react-native/community-cli-plugin': 0.84.1(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(bufferutil@4.1.0)
       '@react-native/gradle-plugin': 0.84.1
       '@react-native/js-polyfills': 0.84.1
       '@react-native/normalize-colors': 0.84.1
-      '@react-native/virtualized-lists': 0.84.1(@types/react@19.2.14)(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0)(bufferutil@4.1.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)
+      '@react-native/virtualized-lists': 0.84.1(@types/react@19.2.14)(react-native@0.84.1(@babel/core@7.29.0)(@react-native-community/cli@20.1.0(bufferutil@4.1.0)(typescript@5.9.3))(@react-native/metro-config@0.84.1(@babel/core@7.29.0))(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4))(react@19.2.4)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1

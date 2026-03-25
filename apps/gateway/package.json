@@ -19,7 +19,9 @@
     "@nclusion/shared-types": "workspace:*",
     "@nclusion/match-odds": "workspace:*",
     "@nclusion/betting": "workspace:*",
-    "@nclusion/balance": "workspace:*"
+    "@nclusion/balance": "workspace:*",
+    "@nclusion/settlement": "workspace:*",
+    "@nclusion/history": "workspace:*"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9",
