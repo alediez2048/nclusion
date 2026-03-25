@@ -71,7 +71,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | Phase | Name | Ticket Range | Status |
 |------|------|--------------|--------|
 | P0 | Discovery and Scope Lock | `PRD-001` to `PM-002` | 🔶 10/11 complete (ARCH-004 narrowed) |
-| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (3/19) |
+| P1 | Foundations | `MOB-001` to `INF-003` | 🔄 In Progress (4/19) |
 | P2 | Core Betting Loop | `ODDS-001` to `SET-005` | ⏳ Pending |
 | P3 | Demo Hardening | `OFF-001` to `QA-005` | ⏳ Pending |
 | P4 | MVP Operational Hardening | `RPC-001` to `SUP-003` | ⏳ Pending |
@@ -117,7 +117,7 @@ The product goal is a low-bandwidth, Android-first sports betting platform for t
 | `SOL-002` | Define program accounts and PDA strategy | ⏳ |
 | `SOL-003` | Implement devnet deployment pipeline | ⏳ |
 | `SOL-004` | Set up HTGN demo token mint or integration path | ⏳ |
-| `INF-001` | Set up environment configuration and secrets handling for demo | ⏳ |
+| `INF-001` | Set up environment configuration and secrets handling for demo | ✅ |
 | `INF-002` | Set up shared types and schemas across mobile and backend | ✅ |
 | `INF-003` | Set up CI for lint, test, and build checks | ⏳ |
 
@@ -347,6 +347,31 @@ Use this structure for each completed ticket entry.
 ### Next Steps
 - [What this ticket unblocks]
 - [What should be tackled next]
+
+---
+
+## INF-001: Set up environment configuration and secrets handling ✅
+
+### Plain-English Summary
+- Created `.env.example` with all required variables (database, Solana, odds provider, auth).
+- Added Zod-based `EnvSchema` and `validateEnv()` to shared-types for startup validation.
+- 8 tests covering validation, coercion, defaults, and rejection of invalid values.
+
+### Metadata
+- **Status:** Complete
+- **Date:** Mar 24, 2026
+- **Ticket:** `INF-001`
+- **Branch:** `feature/INF-001-env-config`
+
+### Testing
+- Tests added: 8
+- Test results: 8 passed
+
+### Files Changed
+- **Created:** `.env.example`, `packages/shared-types/src/env.ts`, `packages/shared-types/src/env.test.ts`
+- **Modified:** `packages/shared-types/src/index.ts` — re-export env module
+- **Modified:** `.gitignore` — allow .env.example
+- **Updated:** `docs/DEVLOG.md` — this entry
 
 ---
 
