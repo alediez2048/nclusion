@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export { EnvSchema, validateEnv, type Env } from "./env.js";
+
 // --- Enums ---
 
 export const BetStatus = {
